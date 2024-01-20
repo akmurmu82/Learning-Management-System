@@ -46,12 +46,12 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/lms-project.git
+   [git clone https://github.com/your-username/lms-project.git](https://github.com/akmurmu82/Learning-Management-System.git)
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd lms-project
+   cd Learning-Management-System
    ```
 
 3. Install dependencies:
