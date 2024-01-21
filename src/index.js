@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import * as React from "react";
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
 
 import { extendBaseTheme, theme as chakraTheme } from "@chakra-ui/react";
 
@@ -20,11 +20,11 @@ const theme = extendBaseTheme({
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
   <ChakraProvider theme={theme}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ChakraProvider>
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
