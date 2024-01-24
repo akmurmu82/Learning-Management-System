@@ -16,6 +16,16 @@ const theme = extendBaseTheme({
   components: {
     Button,
   },
+  bgColor: {
+    primaryLight: "#f33a3a",
+    secondaryLight: "#02a029",
+    buttonBgLight: "#ffffff",
+    buttonBgDark: "#4b4f56",
+  },
+  color: {
+    primaryLight: "#000",
+    primaryDark: "#fff",
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
