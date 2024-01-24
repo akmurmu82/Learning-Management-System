@@ -3,6 +3,7 @@
 Welcome to the Learning Management System (LMS) collaborative project! This platform is designed to enhance the learning experience by providing a comprehensive set of features to both students and educators.
 
 ## Table of Contents
+
 - [Introduction](#introduction)
 - [Features](#features)
 - [Getting Started](#getting-started)
@@ -39,27 +40,32 @@ The Learning Management System (LMS) project is aimed at providing a user-friend
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    [git clone https://github.com/your-username/lms-project.git](https://github.com/akmurmu82/Learning-Management-System.git)
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd Learning-Management-System
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
 
 4. Set up the database:
+
    - Create a MongoDB database and update the connection string in the configuration.
 
 5. Start the server:
