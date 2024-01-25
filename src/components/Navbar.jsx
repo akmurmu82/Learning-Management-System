@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Box,
   Flex,
@@ -35,7 +35,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Navbar() {
-  // const initialFocusRef = React.useRef();
+  const navRef = useRef();
 
   const SetInputLabel = ({ inputLabel }) => {
     return (
@@ -222,12 +222,27 @@ export default function Navbar() {
     );
   };
 
+  // Transparency on Navbar
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        navRef.current.style.backdropFilter = "blur(10px)";
+        navRef.current.style.backgroundColor = "rgba(56, 56, 56, 0.2)";
+      } else {
+        navRef.current.style.backdropFilter = "blur(0px)";
+        navRef.current.style.backgroundColor = "rgba(255, 255, 255, 1)";
+      }
+    });
+  }, []);
+
   return (
     <>
       <Flex
+        ref={navRef}
         as="nav"
         bg="#f7f7fe"
         w="full"
+        transition="all 0.3s"
         h="70px"
         position="fixed"
         top="0"

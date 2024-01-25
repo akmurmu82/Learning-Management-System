@@ -19,8 +19,8 @@ const theme = extendBaseTheme({
   bgColor: {
     primaryLight: "#f33a3a",
     secondaryLight: "#02a029",
-    buttonBgLight: "#ffffff",
-    buttonBgDark: "#4b4f56",
+    buttonBgDark: "#ffffff",
+    buttonBgLight: "#4b4f56",
   },
   color: {
     primaryLight: "#000",
