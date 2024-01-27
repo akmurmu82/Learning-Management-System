@@ -3,36 +3,29 @@ import {
   Box,
   Flex,
   Text,
-  Link,
-  Form,
   Button,
   CardBody,
-  ButtonGroup,
   Heading,
-  Spacer,
   Stack,
   Card,
   HStack,
 } from "@chakra-ui/react";
 import {
-  Portal,
   Popover,
   PopoverTrigger,
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
 } from "@chakra-ui/react";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
+  InputGroup,
+  InputLeftElement,
 } from "@chakra-ui/react";
+
+import { Search2Icon } from "@chakra-ui/icons";
 
 export default function Navbar() {
   const navRef = useRef();
@@ -253,12 +246,35 @@ export default function Navbar() {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Box>
+        <Box
+          display={"flex"}
+          alignItems="center"
+          justifyContent={"center"}
+          gap={5}
+        >
           <Heading size="md">
             <Text fontSize="3xl" fontWeight="bold">
               Your Logo
             </Text>
           </Heading>
+
+          <HStack spacing={20} marginLeft={20}>
+            <InputGroup padding={2} display={"flex"} alignItems="center">
+              <InputLeftElement pointerEvents="none" p={2}>
+                <Search2Icon color="gray.300" marginTop={3} marginLeft={2} />
+              </InputLeftElement>
+              <Input
+                width={"400px"}
+                background={"#f7f7f7"}
+                p={1.5}
+                variant="filled"
+                placeholder="Search Anything"
+                paddingLeft={8}
+                outline={"none"}
+                borderRadius={5}
+              />
+            </InputGroup>
+          </HStack>
         </Box>
         <Box display={"flex"} gap={3}>
           <LoginPopup />
