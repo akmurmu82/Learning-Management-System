@@ -10,6 +10,7 @@ import { FaUserGraduate } from "react-icons/fa6";
 import { GiGlassCelebration } from "react-icons/gi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { CiClock2 } from "react-icons/ci";
+import Navbar from "../components/Navbar";
 
 import {
   Box,
@@ -108,6 +109,7 @@ function Home() {
 
   return (
     <>
+      <Navbar />
       {/* Banner */}
       <Flex
         p={[0, , 50, 70]}
@@ -399,12 +401,7 @@ function Home() {
       </VStack>
 
       {/* More Features and sections */}
-      <Box
-        p="2em 0"
-        w={["90%", "70%"]}
-        m="auto"
-        textAlign="center"
-      >
+      <Box p="2em 0" w={["90%", "70%"]} m="auto" textAlign="center">
         <Text fontSize={["2xl", "3xl"]}>
           Discover more on the MyStudyLife blog
         </Text>

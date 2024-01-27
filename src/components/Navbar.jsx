@@ -235,7 +235,7 @@ export default function Navbar() {
         as="nav"
         bg="#f7f7fe"
         w="full"
-        transition="all 0.3s"
+        transition="all 0.2s"
         h="70px"
         position="fixed"
         top="0"
