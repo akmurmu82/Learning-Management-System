@@ -3,3 +3,10 @@
   color: #000000;
   /* background: linear-gradient(to top, rgb(205, 212, 212), rgb(97, 97, 197)); */
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #fff;
+}
