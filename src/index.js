@@ -9,6 +9,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 
 import { extendBaseTheme, theme as chakraTheme } from "@chakra-ui/react";
+import SidepanelContextProvider from "./Context/AuthContext";
 
 const { Button } = chakraTheme.components;
 
@@ -31,9 +32,11 @@ const theme = extendBaseTheme({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider theme={theme}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <SidepanelContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SidepanelContextProvider>
   </ChakraProvider>
 );
 

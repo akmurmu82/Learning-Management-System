@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 // import { path } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -28,15 +29,21 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 
+
+import { Search2Icon } from "@chakra-ui/icons";
+import { SidepanelContext } from "../Context/AuthContext";
+
 import { Menu, MenuButton, MenuList, IconButton } from "@chakra-ui/react";
 
 import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
+
 
 import {
   getItemFromLocalStorage,
   setItemInLocalStorage,
 } from "../helpers/localStorageHelper.js";
 export default function Navbar() {
+  const { isSidepanelOpen, toggleSidepanel } = useContext(SidepanelContext);
   const navRef = useRef();
 
   const navigate = useNavigate();
@@ -282,6 +289,35 @@ export default function Navbar() {
 
   return (
     <>
+
+      <Flex
+        ref={navRef}
+        as="nav"
+        bg="#f7f7fe"
+        w="full"
+        transition="all 0.2s"
+        h="70px"
+        position="fixed"
+        top="0"
+        left="0"
+        zIndex="999"
+        padding="1rem"
+        px={20}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Box
+          display={"flex"}
+          alignItems="center"
+          justifyContent={"center"}
+          gap={5}
+        >
+          <Heading size="md">
+            <Text onClick={toggleSidepanel} fontSize="3xl" fontWeight="bold">
+              Your Logo
+            </Text>
+          </Heading>
+
       {isAuthenticated ? (
         navigate("/dashboard")
       ) : (
@@ -313,6 +349,7 @@ export default function Navbar() {
                   Your Logo
                 </Text>
               </Heading>
+
 
               {isAuthenticated ? (
                 <>
