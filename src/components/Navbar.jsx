@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
   Box,
   Flex,
@@ -26,8 +26,10 @@ import {
 } from "@chakra-ui/react";
 
 import { Search2Icon } from "@chakra-ui/icons";
+import { SidepanelContext } from "../Context/AuthContext";
 
 export default function Navbar() {
+  const { isSidepanelOpen, toggleSidepanel } = useContext(SidepanelContext);
   const navRef = useRef();
 
   const SetInputLabel = ({ inputLabel }) => {
@@ -253,7 +255,7 @@ export default function Navbar() {
           gap={5}
         >
           <Heading size="md">
-            <Text fontSize="3xl" fontWeight="bold">
+            <Text onClick={toggleSidepanel} fontSize="3xl" fontWeight="bold">
               Your Logo
             </Text>
           </Heading>
