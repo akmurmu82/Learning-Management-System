@@ -6,21 +6,48 @@ import { EmailIcon } from "@chakra-ui/icons";
 export default function Footer() {
   return (
     <>
-      <Flex justifyContent={"center"} p={10} background={"#fff"}>
-        <Box display={"flex"} gap={5} p={10}>
-          <EmailIcon fontSize={25} />
-          <EmailIcon fontSize={25} />
-          <EmailIcon fontSize={25} />
-          <EmailIcon fontSize={25} />
-          <EmailIcon fontSize={25} />
+      <Flex
+        justifyContent={"center"}
+        background={"#fff"}
+        p={{ base: 2, md: 5, lg: 5 }}
+        pt={{ base: 2, md: 5, lg: 5 }}
+      >
+        <Box
+          gap={{ base: 2, md: 5, lg: 5 }}
+          p={{ base: 2, md: 5, lg: 5 }}
+          pt={{ base: 2, md: 5, lg: 5 }}
+          display={{ base: "block", md: "flex", lg: "flex" }}
+        >
+          <EmailIcon
+            fontSize={25}
+            display={{ base: "block", md: "inline", lg: "inline" }}
+          />
+          <EmailIcon
+            fontSize={25}
+            display={{ base: "block", md: "inline", lg: "inline" }}
+          />
+          <EmailIcon
+            fontSize={25}
+            display={{ base: "block", md: "inline", lg: "inline" }}
+          />
+          <EmailIcon
+            fontSize={25}
+            display={{ base: "block", md: "inline", lg: "inline" }}
+          />
+          <EmailIcon
+            fontSize={25}
+            display={{ base: "block", md: "inline", lg: "inline" }}
+          />
         </Box>
       </Flex>
 
       <Box paddingBottom={"100px"} background={"#fff"}>
-        <Flex
+        <Box
+          display={{ base: "block", md: "flex", lg: "flex" }}
           justifyContent={"center"}
-          gap={20}
-          p={10}
+          textAlign={"center"}
+          gap={{ base: 5, md: 15, lg: 20 }}
+          p={{ base: 2, md: 5, lg: 5 }}
           borderTop={"1px solid #bbb"}
           borderBottom={"1px solid #bbb"}
         >
@@ -29,7 +56,7 @@ export default function Footer() {
           <Text>Privacy</Text>
           <Text>T&Cs</Text>
           <Text>About</Text>
-        </Flex>
+        </Box>
         <Text textAlign={"center"} marginTop={20}>
           LearningManagement ©2024 | All Rights Reserved
         </Text>
