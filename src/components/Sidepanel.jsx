@@ -13,11 +13,10 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 import { CiFlag1 } from "react-icons/ci";
 import { useContext, useState } from "react";
-import { SidepanelContext } from "../Context/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function Sidepanel() {
-  const { isSidepanelOpen } = useContext(SidepanelContext);
-  console.log(isSidepanelOpen);
+  const { isSidepanelOpen } = useContext(AuthContext);
 
   function Menus({ icon, title, links }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -80,7 +79,7 @@ export default function Sidepanel() {
         top="70px"
         transition="all 0.3s"
         overflowY="auto" // Set overflowY to "auto" to enable vertical scrolling
-        w={isSidepanelOpen?"20%":"0"}
+        w={isSidepanelOpen ? "20%" : "0"}
         h="100vh" // Set a fixed height for the side panel
         position="fixed"
         left="0"
