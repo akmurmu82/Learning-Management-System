@@ -40,24 +40,19 @@ import {
   setItemInLocalStorage,
 } from "../helpers/localStorageHelper.js";
 export default function Navbar() {
-  const { isSidepanelOpen, toggleSidepanel } = useContext(SidepanelContext);
-  const navRef = useRef();
+  const { isSidepanelOpen, toggleSidepanel } = useContext(AuthContext);
+  const { isAuthenticated, toggleIsAuthenticated } = useContext(AuthContext);
+  let navRef = useRef();
 
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsAuthenticated(true);
+    toggleIsAuthenticated(!isAuthenticated);
   };
 
   useEffect(() => {
-    console.log("isAuthenticated", isAuthenticated);
-    setItemInLocalStorage("isAuthentication", isAuthenticated);
-  }, [isAuthenticated]);
-
-  useEffect(() => {
-    // const isAuthenticated = localStorage.getItem("isAuthentication");
     if (isAuthenticated) {
       navigate("/dashboard");
     }
@@ -272,6 +267,7 @@ export default function Navbar() {
   };
 
   // Transparency on Navbar
+  console.log(navRef.current);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -298,7 +294,7 @@ export default function Navbar() {
         left="0"
         zIndex="999"
         padding="1rem"
-        px={20}
+        px={{ base: 5, md: 20, lg: 20 }}
         alignItems="center"
         justifyContent="space-between"
       >

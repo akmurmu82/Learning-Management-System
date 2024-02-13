@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Flex,
-  Grid,
   HStack,
   Icon,
   Image,
@@ -10,14 +9,14 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import Sidepanel from "../components/Sidepanel";
-import { SidepanelContext } from "../Context/AuthContext";
+// import { SidepanelContext } from "../Context/AuthContext";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
+import { AuthContext } from "../Context/AuthContext";
 
 function StudentDashboard() {
-  const { isSidepanelOpen } = useContext(SidepanelContext);
-  console.log(isSidepanelOpen);
+  const { isSidepanelOpen } = useContext(AuthContext);
 
   function LiveStreamCard({ imgSrc, name, isLive }) {
     return (
