@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 // import { path } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -28,12 +28,13 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 
-import { Search2Icon } from "@chakra-ui/icons";
-import { SidepanelContext } from "../Context/AuthContext";
+import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
+// import { SidepanelContext } from "../Context/AuthContext";
 
 import { Menu, MenuButton, MenuList, IconButton } from "@chakra-ui/react";
 
-import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
+// import { Search2Icon } from "@chakra-ui/icons";
+import {AuthContext} from "../Context/AuthContext.jsx"
 
 import {
   getItemFromLocalStorage,
