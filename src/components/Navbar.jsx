@@ -1,6 +1,4 @@
-
-import React, { useState, useEffect, useRef } from "react";
-// import { path } from "react-router-dom";
+import React, { useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -29,38 +27,29 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 
-
-import { Search2Icon } from "@chakra-ui/icons";
-import { SidepanelContext } from "../Context/AuthContext";
+import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
+import { AuthContext } from "../Context/AuthContext";
 
 import { Menu, MenuButton, MenuList, IconButton } from "@chakra-ui/react";
 
-import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
-
-
-import {
-  getItemFromLocalStorage,
-  setItemInLocalStorage,
-} from "../helpers/localStorageHelper.js";
+// import {
+//   getItemFromLocalStorage,
+//   setItemInLocalStorage,
+// } from "../helpers/localStorageHelper.js";
 export default function Navbar() {
-  const { isSidepanelOpen, toggleSidepanel } = useContext(SidepanelContext);
-  const navRef = useRef();
+  const { isSidepanelOpen, toggleSidepanel } = useContext(AuthContext);
+  const { isAuthenticated, toggleIsAuthenticated } = useContext(AuthContext);
+  let navRef = useRef();
 
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsAuthenticated(true);
+    toggleIsAuthenticated(!isAuthenticated);
   };
 
   useEffect(() => {
-    console.log("isAuthenticated", isAuthenticated);
-    setItemInLocalStorage("isAuthentication", isAuthenticated);
-  }, [isAuthenticated]);
-
-  useEffect(() => {
-    // const isAuthenticated = localStorage.getItem("isAuthentication");
     if (isAuthenticated) {
       navigate("/dashboard");
     }
@@ -275,6 +264,7 @@ export default function Navbar() {
   };
 
   // Transparency on Navbar
+  console.log(navRef.current);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -289,7 +279,6 @@ export default function Navbar() {
 
   return (
     <>
-
       <Flex
         ref={navRef}
         as="nav"
@@ -302,7 +291,7 @@ export default function Navbar() {
         left="0"
         zIndex="999"
         padding="1rem"
-        px={20}
+        px={{ base: 5, md: 20, lg: 20 }}
         alignItems="center"
         justifyContent="space-between"
       >
@@ -318,108 +307,55 @@ export default function Navbar() {
             </Text>
           </Heading>
 
-      {isAuthenticated ? (
-        navigate("/dashboard")
-      ) : (
-        <>
-          <Flex
-            ref={navRef}
-            as="nav"
-            bg="#f7f7fe"
-            w="full"
-            transition="all 0.2s"
-            h="70px"
-            position="fixed"
-            top="0"
-            left="0"
-            zIndex="999"
-            padding="1rem"
-            px={{ base: 5, md: 20, lg: 20 }}
-            alignItems="center"
-            justifyContent="space-between"
+          <HStack
+            spacing={20}
+            marginLeft={20}
+            display={{ base: "none", md: "none", lg: "block" }}
           >
-            <Box
-              display={"flex"}
-              alignItems="center"
-              justifyContent={"center"}
-              gap={5}
-            >
-              <Heading size="md">
-                <Text fontSize="3xl" fontWeight="bold">
-                  Your Logo
-                </Text>
-              </Heading>
-
-
-              {isAuthenticated ? (
-                <>
-                  <HStack
-                    spacing={20}
-                    marginLeft={20}
-                    display={{ base: "none", md: "none", lg: "block" }}
-                  >
-                    <InputGroup
-                      padding={2}
-                      display={"flex"}
-                      alignItems="center"
-                    >
-                      <InputLeftElement pointerEvents="none" p={2}>
-                        <Search2Icon
-                          color="gray.300"
-                          marginTop={3}
-                          marginLeft={2}
-                        />
-                      </InputLeftElement>
-                      <Input
-                        width={"400px"}
-                        background={"#f7f7f7"}
-                        p={1.5}
-                        variant="filled"
-                        placeholder="Search Anything"
-                        paddingLeft={8}
-                        outline={"none"}
-                        borderRadius={5}
-                      />
-                    </InputGroup>
-                  </HStack>
-                </>
-              ) : null}
-            </Box>
-
-            {isAuthenticated ? (
-              <Text>Hello</Text>
-            ) : (
-              <>
-                <Box gap={3} display={{ base: "none", md: "none", lg: "flex" }}>
-                  <LoginPopup />
-                  <SignUpPopup />
-                </Box>
-              </>
-            )}
-
-            <Menu display={{ base: "block", md: "none", lg: "none" }}>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon />}
-                variant="outline"
-                display={{ base: "block", md: "none", lg: "none" }}
-                mr={5}
+            <InputGroup padding={2} display={"flex"} alignItems="center">
+              <InputLeftElement pointerEvents="none" p={2}>
+                <Search2Icon color="gray.300" marginTop={3} marginLeft={2} />
+              </InputLeftElement>
+              <Input
+                width={"400px"}
+                background={"#f7f7f7"}
+                p={1.5}
+                variant="filled"
+                placeholder="Search Anything"
+                paddingLeft={8}
+                outline={"none"}
+                borderRadius={5}
               />
-              <MenuList
-                display={{ base: "flex", md: "none", lg: "none" }}
-                gap={3}
-                bg={"#f7f7febd"}
-                p={3}
-                borderRadius={6}
-              >
-                <LoginPopup />
-                <SignUpPopup />
-              </MenuList>
-            </Menu>
-          </Flex>
-        </>
-      )}
+            </InputGroup>
+          </HStack>
+        </Box>
+
+        <Box gap={3} display={{ base: "none", md: "none", lg: "flex" }}>
+          <LoginPopup />
+          <SignUpPopup />
+        </Box>
+
+        <Menu display={{ base: "block", md: "none", lg: "none" }}>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            icon={<HamburgerIcon />}
+            variant="outline"
+            display={{ base: "block", md: "none", lg: "none" }}
+            mr={5}
+          />
+          <MenuList
+            display={{ base: "flex", md: "none", lg: "none" }}
+            gap={3}
+            bg={"#f7f7febd"}
+            p={3}
+            borderRadius={6}
+          >
+            <LoginPopup />
+            <SignUpPopup />
+          </MenuList>
+        </Menu>
+      </Flex>
     </>
   );
 }

@@ -1,17 +1,38 @@
 import React, { createContext, useState } from "react";
 
 export const SidepanelContext = createContext();
+export const AuthContext = createContext();
 
-function SidepanelContextProvider({ children }) {
+// Authentication Context
+function AuthContextProvider({ children }) {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  function toggleIsAuthenticated() {
+    setIsAuthenticated(!isAuthenticated);
+  }
+
   const [isSidepanelOpen, setIsSidepanelOpen] = useState(true);
   function toggleSidepanel() {
     setIsSidepanelOpen(!isSidepanelOpen);
   }
   return (
-    <SidepanelContext.Provider value={{isSidepanelOpen, toggleSidepanel}}>
+    <AuthContext.Provider value={{ isAuthenticated, toggleIsAuthenticated, isSidepanelOpen, toggleSidepanel }}>
       {children}
-    </SidepanelContext.Provider>
+    </AuthContext.Provider>
   );
 }
 
-export default SidepanelContextProvider;
+// Sidepanel context
+// function SidepanelContextProvider({ children }) {
+//   const [isSidepanelOpen, setIsSidepanelOpen] = useState(true);
+//   function toggleSidepanel() {
+//     setIsSidepanelOpen(!isSidepanelOpen);
+//   }
+//   return (
+//     <SidepanelContext.Provider value={{ isSidepanelOpen, toggleSidepanel }}>
+//       {children}
+//     </SidepanelContext.Provider>
+//   );
+// }
+
+export { AuthContextProvider };
