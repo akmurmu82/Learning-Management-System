@@ -2,8 +2,10 @@ import AllRoutes from "./Routes/AllRoutes";
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import Navbar from "./components/Navbar.jsx";
+// import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import NavbarNew from "./components/NavbarNew.jsx";
+import { useLocation } from "react-router-dom";
 
 // import {
 //   getItemFromLocalStorage,
@@ -11,6 +13,10 @@ import Footer from "./components/Footer.jsx";
 // } from "./helpers/localStorageHelper.js";
 
 function App() {
+  const location = useLocation();
+
+  const isAccountPage = location.pathname.startsWith("/account");
+
   // const [myData, setMyData] = useState(false);
 
   // useEffect(() => {
@@ -27,9 +33,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <NavbarNew />
       <AllRoutes />
-      <Footer />
+      {!isAccountPage && <Footer />}
     </div>
   );
 }

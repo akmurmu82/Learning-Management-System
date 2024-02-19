@@ -2,6 +2,13 @@ import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
 import { EmailIcon } from "@chakra-ui/icons";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -18,23 +25,23 @@ export default function Footer() {
           pt={{ base: 2, md: 5, lg: 5 }}
           display={{ base: "block", md: "flex", lg: "flex" }}
         >
-          <EmailIcon
+          <FaFacebookF
             fontSize={25}
             display={{ base: "block", md: "inline", lg: "inline" }}
           />
-          <EmailIcon
+          <FaTwitter
             fontSize={25}
             display={{ base: "block", md: "inline", lg: "inline" }}
           />
-          <EmailIcon
+          <FaInstagram
             fontSize={25}
             display={{ base: "block", md: "inline", lg: "inline" }}
           />
-          <EmailIcon
+          <FaYoutube
             fontSize={25}
             display={{ base: "block", md: "inline", lg: "inline" }}
           />
-          <EmailIcon
+          <FaLinkedin
             fontSize={25}
             display={{ base: "block", md: "inline", lg: "inline" }}
           />

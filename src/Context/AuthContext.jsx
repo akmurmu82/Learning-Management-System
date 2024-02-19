@@ -5,7 +5,6 @@ export const AuthContext = createContext();
 
 // Authentication Context
 function AuthContextProvider({ children }) {
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   function toggleIsAuthenticated() {
     setIsAuthenticated(!isAuthenticated);
@@ -16,7 +15,14 @@ function AuthContextProvider({ children }) {
     setIsSidepanelOpen(!isSidepanelOpen);
   }
   return (
-    <AuthContext.Provider value={{ isAuthenticated, toggleIsAuthenticated, isSidepanelOpen, toggleSidepanel }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        toggleIsAuthenticated,
+        isSidepanelOpen,
+        toggleSidepanel,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

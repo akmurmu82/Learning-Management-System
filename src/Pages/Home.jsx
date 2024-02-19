@@ -10,7 +10,7 @@ import { FaUserGraduate } from "react-icons/fa6";
 import { GiGlassCelebration } from "react-icons/gi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { CiClock2 } from "react-icons/ci";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 
 import {
   Box,
@@ -109,7 +109,7 @@ function Home() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* Banner */}
       <Flex
         p={[0, , 50, 70]}
